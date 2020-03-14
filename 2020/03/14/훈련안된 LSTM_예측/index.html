@@ -5,13 +5,17 @@
   
 
   
-  <title>Jinny Pak&#39;s Hexo</title>
+  <title>훈련안된 LSTM_예측 | Jinny Pak&#39;s Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Jinny Pak&#39;s Hexo">
-<meta property="og:url" content="http://jinnypak.github.io/index.html">
+  <meta name="description" content="1234from tensorflow.keras.preprocessing.text import Tokenizerfrom tensorflow.keras.preprocessing.sequence import pad_sequencesimport numpy as npimport pandas as pd  전처리1text_dataset&#x3D;pd.read_csv(&#39;text_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="훈련안된 LSTM_예측">
+<meta property="og:url" content="http://jinnypak.github.io/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/index.html">
 <meta property="og:site_name" content="Jinny Pak&#39;s Hexo">
+<meta property="og:description" content="1234from tensorflow.keras.preprocessing.text import Tokenizerfrom tensorflow.keras.preprocessing.sequence import pad_sequencesimport numpy as npimport pandas as pd  전처리1text_dataset&#x3D;pd.read_csv(&#39;text_">
 <meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-03-14T04:54:54.162Z">
+<meta property="article:modified_time" content="2020-03-14T03:44:14.038Z">
 <meta property="article:author" content="Jinny Pak">
 <meta name="twitter:card" content="summary">
   
@@ -62,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-훈련안된 LSTM_예측" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-훈련안된 LSTM_예측" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/" class="article-date">
   <time datetime="2020-03-14T04:54:54.162Z" itemprop="datePublished">2020-03-14</time>
@@ -77,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/">훈련안된 LSTM_예측</a>
+    <h1 class="article-title" itemprop="name">
+      훈련안된 LSTM_예측
     </h1>
   
 
@@ -442,235 +444,19 @@ _________________________________________________________________</code></pre><f
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-nlp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/21/nlp/" class="article-date">
-  <time datetime="2020-02-21T09:31:56.000Z" itemprop="datePublished">2020-02-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/21/nlp/">python_02_LSTM</a>
-    </h1>
+    <a href="/2020/02/21/nlp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">python_02_LSTM</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.keras.preprocessing.text <span class="keyword">import</span> Tokenizer</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.preprocessing.sequence <span class="keyword">import</span> pad_sequences</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">text_dataset=pd.read_csv(<span class="string">'text_dataset_2015_2019.csv'</span>)</span><br><span class="line">ks_meta_2015_2019=pd.read_csv(<span class="string">'ks_meta_2015_2019.csv'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ks_meta_2015_2019.reset_index(inplace=<span class="literal">True</span>)</span><br><span class="line">ks_state=ks_meta_2015_2019[[<span class="string">'index'</span>,<span class="string">'state'</span>]]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ks_st_m=pd.concat([text_dataset,ks_state],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ks_st_m.dropna(inplace=<span class="literal">True</span>)</span><br><span class="line">y=ks_st_m[<span class="string">'state'</span>]</span><br><span class="line">X=ks_st_m[<span class="string">'content'</span>]</span><br><span class="line">X.shape,y.shape</span><br></pre></td></tr></table></figure>
-<p>((153386,), (153386,))</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#y label encoding</span></span><br><span class="line"><span class="comment">#라벨링</span></span><br><span class="line"><span class="comment">#Series를 받아서 라벨인코딩 처리하는 함수</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">col_dict=&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encoding</span><span class="params">(x)</span>:</span></span><br><span class="line">    le=LabelEncoder()</span><br><span class="line"><span class="comment">#fit()어떻게 변환할지 fitting</span></span><br><span class="line">    le.fit(x)</span><br><span class="line"><span class="comment">#변환</span></span><br><span class="line">    label_x=le.transform(x)</span><br><span class="line">    col_dict[x.name]=le.classes_</span><br><span class="line">    <span class="keyword">return</span> label_x</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_enc=encoding(y)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_list=list(X.values)</span><br></pre></td></tr></table></figure>
-<h2 id="전처리"><a href="#전처리" class="headerlink" title="전처리"></a>전처리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> PorterStemmer</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 전처리 함수</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_preprocessing</span><span class="params">(document)</span>:</span></span><br><span class="line">    <span class="comment"># 소문자 변환</span></span><br><span class="line">    document = document.lower()</span><br><span class="line">    <span class="comment">#binary string =&gt; string</span></span><br><span class="line"><span class="comment">#     document = document.decode('utf-8')</span></span><br><span class="line">    <span class="comment">#&lt;br /&gt; =&gt; ' '</span></span><br><span class="line">    document = document.replace(<span class="string">'\\'</span>,<span class="string">''</span>)</span><br><span class="line">    <span class="comment"># 특수문자 제거</span></span><br><span class="line">    pattern = <span class="string">'[&#123;&#125;]'</span>.format(string.punctuation)</span><br><span class="line">    document = re.sub(pattern, <span class="string">' '</span>, document)</span><br><span class="line">    <span class="comment"># stopword 제거, stemming</span></span><br><span class="line">    sw = stopwords.words(<span class="string">'english'</span>)</span><br><span class="line">    stemmer = PorterStemmer()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 문자열로 변환 후 반환</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join( stemmer.stem(word) <span class="keyword">for</span> word <span class="keyword">in</span> document <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> sw)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text = [text_preprocessing(x) <span class="keyword">for</span> x <span class="keyword">in</span> X_list]</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t = Tokenizer()</span><br><span class="line">t.fit_on_texts(text)</span><br><span class="line">vocab_size = len(t.word_index) + <span class="number">1</span></span><br><span class="line">print(<span class="string">'단어 집합의 크기 : %d'</span> % vocab_size)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">max_features=<span class="number">10000</span></span><br><span class="line">maxlen=<span class="number">500</span></span><br><span class="line">batch_size=<span class="number">32</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sequences=t.texts_to_sequences(text)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">word_index=t.word_index</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=pad_sequences(sequences,maxlen=maxlen)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.shape</span><br></pre></td></tr></table></figure>
-<p>(153386, 500)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels=np.array(y_enc)</span><br><span class="line">labels.shape</span><br></pre></td></tr></table></figure>
-<p>(153386,)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(data, labels,stratify=labels)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> Embedding, Flatten, Dense,LSTM,SimpleRNN</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = Sequential()</span><br><span class="line">model.add(Embedding(max_words, embedding_dim, input_length=maxlen))</span><br><span class="line">model.add(Flatten())</span><br><span class="line">model.add(Dense(<span class="number">32</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>, activation=<span class="string">'sigmoid'</span>))</span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model.compile(optimizer=<span class="string">'adam'</span>,</span><br><span class="line">              loss=<span class="string">'binary_crossentropy'</span>,</span><br><span class="line">              metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">history = model.fit(X_train, y_train,</span><br><span class="line">                    epochs=<span class="number">20</span>,</span><br><span class="line">                    batch_size=batch_size,validation_split=<span class="number">0.2</span>)</span><br><span class="line">model.save_weights(<span class="string">'model_Lstm.h5'</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jinnypak.github.io/2020/02/21/nlp/" data-id="ck7r55t7g0001osuz4a33bc25" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-python-01" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/16/python-01/" class="article-date">
-  <time datetime="2020-02-16T07:13:39.000Z" itemprop="datePublished">2020-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/16/python-01/">python_01_DTM/TF-IDF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Text-Classification-with-Python"><a href="#Text-Classification-with-Python" class="headerlink" title="Text Classification with Python"></a>Text Classification with Python</h1><h1 id="Kickstarter-project-prediction-using-Text-data"><a href="#Kickstarter-project-prediction-using-Text-data" class="headerlink" title="Kickstarter project prediction using Text data"></a>Kickstarter project prediction using Text data</h1><h2 id="File-Loading"><a href="#File-Loading" class="headerlink" title="File Loading"></a>File Loading</h2><pre><code>- Loading kickstarter text content csv
-- Loading Kickstarter meta data csv </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">merge_text=pd.read_csv(<span class="string">'merged_text_2019.csv'</span>)</span><br><span class="line">ks_meta=pd.read_csv(<span class="string">'ks_2019_updated.csv'</span>)</span><br><span class="line"></span><br><span class="line">ks_meta.reset_index(inplace=<span class="literal">True</span>) </span><br><span class="line">ks_state=ks_meta[[<span class="string">'index'</span>,<span class="string">'state'</span>]]</span><br><span class="line">ks_st_m=ks_state.merge(merge_text,how=<span class="string">'left'</span>)</span><br><span class="line">ks_st_m.dropna(inplace=<span class="literal">True</span>)</span><br><span class="line">y=ks_st_m[<span class="string">'state'</span>]</span><br><span class="line">X=ks_st_m[<span class="string">'content'</span>]</span><br><span class="line">X.shape,y.shape</span><br></pre></td></tr></table></figure>
-
-<h2 id="Data-Preporcessing-and-Split"><a href="#Data-Preporcessing-and-Split" class="headerlink" title="Data Preporcessing and Split"></a>Data Preporcessing and Split</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#y label encoding</span></span><br><span class="line"><span class="comment">#라벨링</span></span><br><span class="line"><span class="comment">#Series를 받아서 라벨인코딩 처리하는 함수</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">col_dict=&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encoding</span><span class="params">(x)</span>:</span></span><br><span class="line">    le=LabelEncoder()</span><br><span class="line"><span class="comment">#fit()어떻게 변환할지 fitting</span></span><br><span class="line">    le.fit(x)</span><br><span class="line"><span class="comment">#변환</span></span><br><span class="line">    label_x=le.transform(x)</span><br><span class="line">    col_dict[x.name]=le.classes_</span><br><span class="line">    <span class="keyword">return</span> label_x</span><br><span class="line">y_enc=encoding(y)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y_enc,stratify=y_enc)</span><br><span class="line">X_train.shape,X_test.shape,y_train.shape,y_test.shape</span><br></pre></td></tr></table></figure>
-<h2 id="DTM"><a href="#DTM" class="headerlink" title="DTM"></a>DTM</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line">cv = CountVectorizer(stop_words=<span class="string">'english'</span>,min_df=<span class="number">10</span>)</span><br><span class="line">cv.fit(X_train)</span><br><span class="line">X_train_dtm = cv.transform(X_train)</span><br><span class="line">X_test_dtm = cv.transform(X_test)</span><br></pre></td></tr></table></figure>
-<h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="comment">## Machine Learning Model</span></span><br><span class="line">```python</span><br><span class="line">    <span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier, RandomForestClassifier</span><br><span class="line">    <span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line">    <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">    <span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBClassifier</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-<h2 id="Model-Estimation"><a href="#Model-Estimation" class="headerlink" title="Model Estimation"></a>Model Estimation</h2><pre><code class="python"></code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jinnypak.github.io/2020/02/16/python-01/" data-id="ck6oq3xty0000r4uz52us7j2n" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/16/test/" class="article-date">
-  <time datetime="2020-02-16T07:00:18.000Z" itemprop="datePublished">2020-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/16/test/">test 포스트</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>test </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jinnypak.github.io/2020/02/16/test/" data-id="ck6oop2fi0000mcuz9gq323oy" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/16/hello-world/" class="article-date">
-  <time datetime="2020-02-16T06:53:10.824Z" itemprop="datePublished">2020-02-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jinnypak.github.io/2020/02/16/hello-world/" data-id="ck6oohi2k0000asuzeryv7adk" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         

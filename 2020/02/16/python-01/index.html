@@ -15,7 +15,7 @@
 <meta property="og:description" content="Text Classification with PythonKickstarter project prediction using Text dataFile Loading- Loading kickstarter text content csv - Loading Kickstarter meta data csv 1234567891011import pandas as pdmerg">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-02-16T07:13:39.000Z">
-<meta property="article:modified_time" content="2020-02-16T07:42:36.031Z">
+<meta property="article:modified_time" content="2020-02-16T07:53:54.995Z">
 <meta property="article:author" content="Jinny Pak">
 <meta name="twitter:card" content="summary">
   
@@ -90,11 +90,12 @@
       
         <h1 id="Text-Classification-with-Python"><a href="#Text-Classification-with-Python" class="headerlink" title="Text Classification with Python"></a>Text Classification with Python</h1><h1 id="Kickstarter-project-prediction-using-Text-data"><a href="#Kickstarter-project-prediction-using-Text-data" class="headerlink" title="Kickstarter project prediction using Text data"></a>Kickstarter project prediction using Text data</h1><h2 id="File-Loading"><a href="#File-Loading" class="headerlink" title="File Loading"></a>File Loading</h2><pre><code>- Loading kickstarter text content csv
 - Loading Kickstarter meta data csv </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">merge_text=pd.read_csv(<span class="string">'merged_text_2019.csv'</span>)</span><br><span class="line">ks_meta=pd.read_csv(<span class="string">'ks_2019_updated.csv'</span>)</span><br><span class="line"></span><br><span class="line">ks_meta.reset_index(inplace=<span class="literal">True</span>) </span><br><span class="line">ks_state=ks_meta[[<span class="string">'index'</span>,<span class="string">'state'</span>]]</span><br><span class="line">ks_st_m=ks_state.merge(merge_text,how=<span class="string">'left'</span>)</span><br><span class="line">ks_st_m.dropna(inplace=<span class="literal">True</span>)</span><br><span class="line">y=ks_st_m[<span class="string">'state'</span>]</span><br><span class="line">X=ks_st_m[<span class="string">'content'</span>]</span><br><span class="line">X.shape,y.shape</span><br></pre></td></tr></table></figure>
+
 <h2 id="Data-Preporcessing-and-Split"><a href="#Data-Preporcessing-and-Split" class="headerlink" title="Data Preporcessing and Split"></a>Data Preporcessing and Split</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#y label encoding</span></span><br><span class="line"><span class="comment">#라벨링</span></span><br><span class="line"><span class="comment">#Series를 받아서 라벨인코딩 처리하는 함수</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">col_dict=&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encoding</span><span class="params">(x)</span>:</span></span><br><span class="line">    le=LabelEncoder()</span><br><span class="line"><span class="comment">#fit()어떻게 변환할지 fitting</span></span><br><span class="line">    le.fit(x)</span><br><span class="line"><span class="comment">#변환</span></span><br><span class="line">    label_x=le.transform(x)</span><br><span class="line">    col_dict[x.name]=le.classes_</span><br><span class="line">    <span class="keyword">return</span> label_x</span><br><span class="line">y_enc=encoding(y)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y_enc,stratify=y_enc)</span><br><span class="line">X_train.shape,X_test.shape,y_train.shape,y_test.shape</span><br></pre></td></tr></table></figure>
 <h2 id="DTM"><a href="#DTM" class="headerlink" title="DTM"></a>DTM</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line">cv = CountVectorizer(stop_words=<span class="string">'english'</span>,min_df=<span class="number">10</span>)</span><br><span class="line">cv.fit(X_train)</span><br><span class="line">X_train_dtm = cv.transform(X_train)</span><br><span class="line">X_test_dtm = cv.transform(X_test)</span><br></pre></td></tr></table></figure>
 <h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="comment">## Machine Learning Model</span></span><br><span class="line">```python</span><br><span class="line">    <span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier, RandomForestClassifier</span><br><span class="line">    <span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line">    <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">    <span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBClassifier</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
@@ -112,6 +113,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/02/21/nlp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">최신</strong>
+      <div class="article-nav-title">
+        
+          python_02_LSTM
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/16/test/" id="article-nav-older" class="article-nav-link-wrap">
@@ -140,7 +150,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">아카이브</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">2월 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">3월 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">2월 2020</a></li></ul>
     </div>
   </div>
 
@@ -151,6 +161,14 @@
     <h3 class="widget-title">최근 포스트</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/">훈련안된 LSTM_예측</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/nlp/">python_02_LSTM</a>
+          </li>
         
           <li>
             <a href="/2020/02/16/python-01/">python_01_DTM/TF-IDF</a>
