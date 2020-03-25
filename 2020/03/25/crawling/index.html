@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>crawling | Jinny Pak&#39;s Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="123456789import numpy as npimport pandas as pdimport randomfrom bs4 import BeautifulSoupimport requestsimport timefrom selenium import webdriverfrom selenium.webdriver import Chromefrom selenium.webdr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crawling">
+<meta property="og:url" content="http://jinnypak.github.io/2020/03/25/crawling/index.html">
+<meta property="og:site_name" content="Jinny Pak&#39;s Hexo">
+<meta property="og:description" content="123456789import numpy as npimport pandas as pdimport randomfrom bs4 import BeautifulSoupimport requestsimport timefrom selenium import webdriverfrom selenium.webdriver import Chromefrom selenium.webdr">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-03-25T06:51:07.000Z">
+<meta property="article:modified_time" content="2020-03-25T06:52:18.833Z">
+<meta property="article:author" content="Jinny Pak">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jinny Pak&#39;s Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jinny Pak&#39;s Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="검색"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://JinnyPak.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-crawling" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/25/crawling/" class="article-date">
+  <time datetime="2020-03-25T06:51:07.000Z" itemprop="datePublished">2020-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      crawling
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> Chrome</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ChromeOptions</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ks_2016=pd.read_csv(<span class="string">'ks_2016.csv'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#크롤링 block 당했거나 오류가 났을 때, continue하고 다음 url로 바로 넘어가는게 아니라 약 2분 정도 간격으로 10번까지 찔러보다가 되면 scrape하고 안 되면 continue되도록 한다</span></span><br><span class="line">options = ChromeOptions()</span><br><span class="line"></span><br><span class="line">driver = Chrome(options=options)</span><br><span class="line">content_list = []</span><br><span class="line"><span class="keyword">for</span> idx, url <span class="keyword">in</span> enumerate( ks_2016[<span class="string">'url_project'</span>][<span class="number">7000</span>:<span class="number">8000</span>], start=<span class="number">7000</span>):</span><br><span class="line">    driver.get(url)</span><br><span class="line">    time.sleep(random.uniform(<span class="number">8</span>,<span class="number">20</span>))</span><br><span class="line">    req = driver.page_source</span><br><span class="line">    soup = BeautifulSoup(req, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        content_tag = soup.select_one(<span class="string">'div.rte__content'</span>)</span><br><span class="line">        contents = content_tag.select(<span class="string">'p'</span>)</span><br><span class="line">        contents_collected = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> contents:</span><br><span class="line">            content = c.get_text().strip()</span><br><span class="line">            contents_collected.append(content)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            risk_challenge_tag = soup.select_one(<span class="string">'div#risksAndChallenges'</span>)</span><br><span class="line">            risk_challenge_list = risk_challenge_tag.select(<span class="string">'p.js-risks-text.text-preline'</span>)</span><br><span class="line">            <span class="keyword">for</span> rc <span class="keyword">in</span> risk_challenge_list:</span><br><span class="line">                risk_challenge = rc.get_text().strip()</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            risk_challenge=<span class="string">" "</span> <span class="comment">#또는 np.nan</span></span><br><span class="line">        <span class="comment">#오류 나기 전까지 저장되어 있는 content_list에는 이어서 append하고; 그래서 content_list에 모으는 것도 유지할 수 있도록</span></span><br><span class="line">        content_list.append([idx, contents_collected, risk_challenge])</span><br><span class="line">        <span class="comment">#오류 난 후부턴 다시 크롤링 할 때, 매 페이지 긁어온 것마다 바로바로 csv파일에 한줄씩 append 할 것이다</span></span><br><span class="line">        content_list_since_error = []</span><br><span class="line">        content_list_since_error.append([idx, contents_collected, risk_challenge])</span><br><span class="line">        pd.DataFrame(content_list_since_error, columns=[<span class="string">'index'</span>,<span class="string">'content'</span>,<span class="string">'risk_challenge'</span>]).to_csv(<span class="string">'ks_content_crawled_2016_7.csv'</span>, index=<span class="literal">False</span>, header=<span class="literal">False</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">        print(idx)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> ex:</span><br><span class="line">        print(<span class="string">"Unexpected error at &#123;&#125;"</span>.format(idx), ex)</span><br><span class="line">        error_url = url</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> count &lt; <span class="number">11</span>:</span><br><span class="line">            print(<span class="string">"Retry:"</span>, count)</span><br><span class="line">            driver.get(error_url)</span><br><span class="line">            time.sleep(random.uniform(<span class="number">8</span>,<span class="number">20</span>))</span><br><span class="line">            req = driver.page_source</span><br><span class="line">            soup = BeautifulSoup(req, <span class="string">'lxml'</span>)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                content_tag = soup.select_one(<span class="string">'div.rte__content'</span>)</span><br><span class="line">                contents = content_tag.select(<span class="string">'p'</span>)</span><br><span class="line">                contents_collected = []</span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> contents:</span><br><span class="line">                    content = c.get_text().strip()</span><br><span class="line">                    contents_collected.append(content)</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    risk_challenge_tag = soup.select_one(<span class="string">'div#risksAndChallenges'</span>)</span><br><span class="line">                    risk_challenge_list = risk_challenge_tag.select(<span class="string">'p.js-risks-text.text-preline'</span>)</span><br><span class="line">                    <span class="keyword">for</span> rc <span class="keyword">in</span> risk_challenge_list:</span><br><span class="line">                        risk_challenge = rc.get_text().strip()</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    risk_challenge=<span class="string">" "</span> <span class="comment">#또는 np.nan</span></span><br><span class="line">                content_list.append([idx, contents_collected, risk_challenge])</span><br><span class="line">                content_list_since_error = []</span><br><span class="line">                content_list_since_error.append([idx, contents_collected, risk_challenge])</span><br><span class="line">                pd.DataFrame(content_list_since_error, columns=[<span class="string">'index'</span>,<span class="string">'content'</span>,<span class="string">'risk_challenge'</span>]).to_csv(<span class="string">'ks_content_crawled_2016_7.csv'</span>, index=<span class="literal">False</span>, header=<span class="literal">False</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">                print(idx)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> et:</span><br><span class="line">                print(<span class="string">"Error while retrying:"</span>, et)</span><br><span class="line">                time.sleep(random.uniform(<span class="number">100</span>,<span class="number">130</span>))</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">        <span class="comment">#만약 재시도를 10번 했는데도 크롤링에 실패한다면, 원래 했던대로 오류 index, url, nan값을 csv파일들에 저장</span></span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">11</span>:</span><br><span class="line">            error_list = []</span><br><span class="line">            error_list.append([idx, error_url])</span><br><span class="line">            pd.DataFrame(error_list, columns=[<span class="string">'index'</span>,<span class="string">'error_url'</span>]).to_csv(<span class="string">'ks_middle_errors_2016_7.csv'</span>, index=<span class="literal">False</span>, header=<span class="literal">False</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">            content_list.append([idx, error_url, np.nan])</span><br><span class="line">            error_into_saved_csv = []</span><br><span class="line">            error_into_saved_csv.append([idx, error_url, np.nan])</span><br><span class="line">            pd.DataFrame(error_into_saved_csv, columns=[<span class="string">'index'</span>,<span class="string">'content'</span>,<span class="string">'risk_challenge'</span>]).to_csv(<span class="string">'ks_content_crawled_2016_7.csv'</span>, index=<span class="literal">False</span>, header=<span class="literal">False</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">driver.close()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jinnypak.github.io/2020/03/25/crawling/" data-id="ck86z1xxx0000g8uz6elo1tth" class="article-share-link">공유</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">훈련안된 LSTM_예측</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">아카이브</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">3월 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">2월 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">최근 포스트</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/25/crawling/">crawling</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/14/%ED%9B%88%EB%A0%A8%EC%95%88%EB%90%9C%20LSTM_%EC%98%88%EC%B8%A1/">훈련안된 LSTM_예측</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/nlp/">python_02_LSTM</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/16/python-01/">python_01_DTM/TF-IDF</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/16/test/">test 포스트</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jinny Pak<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
